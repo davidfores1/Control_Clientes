@@ -28,6 +28,15 @@ public class Conexion {
     return getDataSource().getConnection();
     }
     
+     public static void close(PreparedStatement stmt){
+    
+        try {
+            stmt.close();
+        } catch (SQLException ex) {
+           ex.printStackTrace(System.out);
+        }
+    }
+    
     public static void close(ResultSet rs){
     
         try {
