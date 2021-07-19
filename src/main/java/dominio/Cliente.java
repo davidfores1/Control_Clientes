@@ -14,6 +14,7 @@ public class Cliente {
     private double saldo;
 
     public Cliente() {
+        
     }
 
     public Cliente(int idCliente) {
