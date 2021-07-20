@@ -12,13 +12,10 @@
     <body>
 
         <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"/>
-        <jsp:include page="WEB-INF/paginas/comunes/botonesNavegacion.jsp"/>
         
-        <c:forEach var="cliente" items="${clientes}">
-            <ul>
-                <li>${cliente.idCliente}. ${cliente.nombre} ${cliente.apellido}, ${cliente.email}, ${cliente.telefono}, $${cliente.saldo}</li>
-            </ul>
-        </c:forEach>
+        <jsp:include page="WEB-INF/paginas/comunes/botonesNavegacion.jsp"/>
+
+        <jsp:include page="WEB-INF/paginas/cliente/listadoClientes.jsp"/>
 
         <jsp:include page="WEB-INF/paginas/comunes/piePagina.jsp"/>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
