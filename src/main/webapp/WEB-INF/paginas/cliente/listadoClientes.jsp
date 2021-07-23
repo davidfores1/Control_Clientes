@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 mb-5">
             <div class="card">
                 <div class="card-header">
                     <h4>Listado de Clientes</h4>
@@ -41,7 +41,7 @@
 
             </div>
         </div>
-        <!<!-- Tarjeta para los totales -->
+        <!-- Tarjeta para los totales de todos los saldos-->
         <div class="col-md-3">
             <div class="card text-center bg-danger text-white mb-3">
                 <div class="card-body">
@@ -52,7 +52,7 @@
                     </h5>   
                 </div>         
             </div> 
-
+  <!-- Tarjeta para los totales -->
             <div class="card text-center bg-success text-white mb-3">
                 <div class="card-body">
                     <h3>Total Clientes</h3>
@@ -61,8 +61,10 @@
                     </h4>   
                 </div>         
             </div> 
-
         </div>
-
     </div>
 </div> 
+                    
+ <!-- Modal Agregar cliente -->
+ 
+ <jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
