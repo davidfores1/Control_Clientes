@@ -17,6 +17,13 @@ public class ServletControlador extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        this.accionDefault(request, response);
+
+    }
+
+    private void accionDefault(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         List<Cliente> clientes = new ClienteDaoJDBC().listar();
         request.setAttribute("clientes", clientes);
         request.setAttribute("totalClientes", clientes.size());
@@ -32,6 +39,49 @@ public class ServletControlador extends HttpServlet {
             saldoTotal += cliente.getSaldo();
         }
         return saldoTotal;
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String accion = request.getParameter("accion");
+        
+        System.out.println("HOllllll"); 
+
+        if (accion != null) {
+            switch (accion) {
+                case "insertar":
+                    this.insertarCliente(request, response);
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+
+        } else {
+            this.accionDefault(request, response);
+        }
+    }
+
+    private void insertarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //recuperamos los valores del formulario agregar cliente
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+        double saldo = 0;
+        String saldoString = request.getParameter("saldo");
+        if (saldoString != null && !"".equals(saldoString)) {
+            saldo = Double.parseDouble(saldoString);
+        }
+        // Creamos el objeto de cliente(modelo)
+        Cliente cliente = new Cliente(nombre, apellido, email, telefono, saldo);
+        
+        //insertamos el nuevo objeto en la base de datos
+        int registrosModificados = new ClienteDaoJDBC().insertar(cliente);
+        System.out.println("ResgistrosModificados =" + registrosModificados);
+        
+        //Redirecionamos hacia accion por default
+        this.accionDefault(request, response);
     }
 
 }
