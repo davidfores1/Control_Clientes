@@ -21,7 +21,7 @@ public class ClienteDaoJDBC {
             + "VALUES(?,?,?,?,?)";
 
     private static final String SQL_UPDATE = "UPDATE cliente "
-            + "( SET nombre = ?, apellido = ?, email  = ?, telefono = ?, saldo = ? WHERE id_cliente = ?)";
+            + " SET nombre = ?, apellido = ?, email  = ?, telefono = ?, saldo = ? WHERE id_cliente = ?";
 
     private static final String SQL_DELETE = "DELETE FROM cliente"
             + "( WHERE id_cliente = ?)";
@@ -134,7 +134,6 @@ public class ClienteDaoJDBC {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-        ResultSet rs = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
@@ -152,7 +151,6 @@ public class ClienteDaoJDBC {
             ex.printStackTrace(System.out);
         } finally {
 
-            Conexion.close(rs);
             Conexion.close(stmt);
             Conexion.close(conn);
 
