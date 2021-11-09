@@ -17,7 +17,8 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Saldo</th>
-                            <th></th>
+                            <th>Opciones</th>
+
                         </tr>
                     </thead>
 
@@ -31,6 +32,10 @@
                                     <a href="${pageContext.request.contextPath}/ServletControlador?accion=editar&idCliente=${cliente.idCliente}"
                                        class="btn btn-secondary">
                                         <i class="fas fa-angle-double-right"></i>Editar
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/ServletControlador?accion=eliminar&idCliente=${cliente.idCliente}"
+                                       class="btn btn-danger">
+                                        <i class="fas fa-trash"></i> Eliminar
                                     </a>
                                 </td>
                             </tr>
@@ -52,7 +57,7 @@
                     </h5>   
                 </div>         
             </div> 
-  <!-- Tarjeta para los totales -->
+            <!-- Tarjeta para los totales -->
             <div class="card text-center bg-success text-white mb-3">
                 <div class="card-body">
                     <h3>Total Clientes</h3>
@@ -64,7 +69,7 @@
         </div>
     </div>
 </div> 
-                    
- <!-- Modal Agregar cliente -->
- 
- <jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>
+
+<!-- Modal Agregar cliente -->
+
+<jsp:include page="/WEB-INF/paginas/cliente/agregarCliente.jsp"/>

@@ -24,7 +24,7 @@ public class ClienteDaoJDBC {
             + " SET nombre = ?, apellido = ?, email  = ?, telefono = ?, saldo = ? WHERE id_cliente = ?";
 
     private static final String SQL_DELETE = "DELETE FROM cliente"
-            + "( WHERE id_cliente = ?)";
+            + " WHERE id_cliente = ?";
 
     public List<Cliente> listar() {
         Connection conn = null;
@@ -163,11 +163,10 @@ public class ClienteDaoJDBC {
 
         Connection conn = null;
         PreparedStatement stmt = null;
-        ResultSet rs = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_UPDATE);
+            stmt = conn.prepareStatement(SQL_DELETE);
             stmt.setInt(1, cliente.getIdCliente());
 
             rows = stmt.executeUpdate();
@@ -176,7 +175,6 @@ public class ClienteDaoJDBC {
             ex.printStackTrace(System.out);
         } finally {
 
-            Conexion.close(rs);
             Conexion.close(stmt);
             Conexion.close(conn);
 
